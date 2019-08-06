@@ -1,0 +1,113 @@
+﻿@model WS4.Models.Book
+@{
+    ViewBag.Title = "BookDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>書籍明細</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Book</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.BOOK_NAME, new { @class = "form-control", disabled = "disabled" })
+         
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_AUTHOR, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.BOOK_AUTHOR, new { @class = "form-control", disabled = "disabled" })
+          
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_PUBLISHER, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.BOOK_PUBLISHER, new { @class = "form-control", disabled = "disabled" })
+          
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_NOTE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.BOOK_NOTE, 10, 80, new { @class = "form-control", disabled = "disabled" } )
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_BOUGHT_DATE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.BOOK_BOUGHT_DATE, new { @class = "form-control", disabled = "disabled" })  @*日期格式*@
+          
+        </div>
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_CLASS_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.BOOK_CLASS_NAME, new { @class = "form-control", disabled = "disabled" })
+      
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_KEEPER, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.USER_ENAME, new { @class = "form-control", disabled = "disabled" })
+         
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BOOK_STATUS, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.CODE_NAME,  new { @class = "form-control", disabled = "disabled" } )
+         
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+         
+            <input id="deleteBook" type="button" value="刪除" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+      $("#deleteBook").click(function (e) {
+                e.preventDefault();  //避免按鈕送出預設行為
+                if (confirm("確定要刪除嗎?")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "DeleteBook",
+                        data: {"bookId" : @Model.BOOKID}, //抓BookId來刪
+                        datatype: "json",
+                        success: function (response) {
+                            alert("已成功刪除");
+                            window.location = "/Book/Index";//導回首頁
+                        }, error: function (error) {
+                            alert("系統發生錯誤");
+                        }
+                    });
+                }
+                return false;
+            });
+</script>

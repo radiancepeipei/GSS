@@ -1,0 +1,134 @@
+﻿    <head>
+        <link href="~/styles/style.css" rel="stylesheet" />
+        <script src="~/Scripts/script.js"></script>
+        <script src="~/Scripts/dropdownlist.js"></script>
+        <script src="~/Scripts/datepicker.js"></script>
+        <script src="~/Scripts/autocomplete.js"></script>
+    </head>
+
+<body>
+    <h2>圖書資料查詢</h2>
+    <form id="Form1">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-2" for="search_book_name">書名</label>
+                <div class="col-md-10">
+                    <input class="form-control" id="search_book_name" type="text"  style="width: 38.5%;"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="search_book_class_dropdownlist">圖書類別</label>
+                <div class="col-md-10">
+                    <select class="form-control " id ="search_book_class_dropdownlist" style="width: 29.5%;"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="search_book_keeper_dropdownlist">借閱人</label>
+                <div class="col-md-10">
+                    <select class="form-control " id="search_book_keeper_dropdownlist" style="width: 29.5%;"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="search_book_status_dropdownlist">借閱狀態</label>
+                <div class="col-md-10">
+                    <select class="form-control " id="search_book_status_dropdownlist" style="width: 29.5%;"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-10">
+                    <button class="btn btn-default" id="search_book_btn">查詢</button>
+                    <button class="btn btn-default"   id="insert_book_btn" >新增</button>
+                    <button class="btn btn-default" id="clear_book_btn">清除</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="book_grid">
+    </div>
+    <!--update book  window--->
+    <div id="update_book_window" style="padding-top:0px">
+        <form id="Form2" >
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_id" style="display:none">編號</label>
+                    <div class="col-md-10">
+                        <input class="form-control " id="update_book_id" type="text"  style="display:none;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_name">書名</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="update_book_name" type="text" style="height:18px;"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_author">作者</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="update_book_author" type="text"style="height:18px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_publisher">出版商</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="update_book_publisher" type="text" style="height:18px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_note">內容簡介</label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" id="update_book_note" style="width: 80%; height:5%; "  >
+                        </textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_bought_datepicker">購書日期</label>
+                    <div class="col-md-10">
+                        <input class="form-control " id="update_book_bought_datepicker" type="date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_class_dropdownlist">圖書類別</label>
+                    <div class="col-md-10">
+                        <select class="form-control " id="update_book_class_dropdownlist"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_status_dropdownlist">借閱狀態</label>
+                    <div class="col-md-10">
+                        <select class="form-control " id="update_book_status_dropdownlist"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="update_book_keeper_dropdownlist">借閱人</label>
+                    <div class="col-md-10">
+                        <select class="form-control " id="update_book_keeper_dropdownlist"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-10">
+                        <button class="btn btn-default" id="update_book_save" type="submit">存檔</button>
+                        <button class="btn btn-default" id="deleteBook">刪除</button>
+                    </div>
+                </div>
+                <div>
+                    <a href="/Book/Index">回首頁</a>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+
+
+</body>
+
+

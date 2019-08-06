@@ -1,0 +1,80 @@
+﻿    <head>
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        <script src="~/Scripts/kendo.all.min.js"></script>
+        <script src="~/Scripts/script.js"></script>
+
+    </head>
+<h2>UpdateBook</h2>
+<form id="Form1">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2" for="book_name">書籍名稱</label>
+
+            <div class="col-md-10">
+                <input class="form-control" id="book_name" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="book_author">作者</label>
+            <div class="col-md-10">
+                <select class="form-control" id="book_author" style="width: 30%;"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="book_publisher">出版社</label>
+            <div class="col-md-10">
+                <select class="form-control" id="book_publisher" style="width: 30%;"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="book_note">簡介</label>
+            <div class="col-md-10">
+                <select class="form-control" id="book_note" style="width: 30%;"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="book_bought_date">購買日期</label>
+            <div class="col-md-10">
+                <select class="form-control" id="book_bought_date" style="width: 30%;"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="book_class_dropdownlist">類別名稱</label>
+            <div class="col-md-10">
+                <select class="form-control" id="book_class_dropdownlist" style="width: 30%;"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="book_status_dropdownlist">書籍狀態</label>
+            <div class="col-md-10">
+                <select class="form-control" id="book_status_dropdownlist" style="width: 30%;"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="user_dropdownlist">借閱人</label>
+            <div class="col-md-10">
+                <select class="form-control" id="user_dropdownlist" style="width: 30%;"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <button class="btnUpdate" type="submit" value="存檔" />
+                <button id="deleteBook" type="button" value="刪除" class="btn btn-default" />
+
+            </div>
+        </div>
+        <div>
+            <a href="~/Views/Book/Index.cshtml"> Back to List</a>
+
+        </div>
+
+
+    </div>
+</form>
+
+
+
+

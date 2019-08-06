@@ -1,0 +1,70 @@
+﻿
+    <head>
+        <script src="~/Scripts/script.js"></script>
+    </head>
+
+<h2>新增書籍</h2>
+
+<form id="insert_book_form">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2" for="insert_book_id" style="display:none">編號</label>
+            <div class="col-md-10">
+                <input class="form-control book_id" id="insert_book_id" type="text" style="display:none" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="insert_book_name">書名</label>
+            <div class="col-md-10">
+                <input class="form-control" id="insert_book_name" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="insert_book_author">作者</label>
+            <div class="col-md-10">
+                <input class="form-control" id="insert_book_author" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="insert_book_publisher">出版商</label>
+            <div class="col-md-10">
+                <input class="form-control" id="insert_book_publisher" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea class="control-label col-md-2" for="insert_book_note">內容簡介</textarea>
+            <div class="col-md-10">
+                <textarea class="form-control" id="insert_book_note" style="width: 50%; height:5%;" type="text" cols="30" rows="5">
+                </textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="insert_book_bought_datepicker">購書日期</label>
+            <div class="col-md-10">
+                <input class="form-control book_bought_datepicker" id="insert_book_bought_datepicker" type="date" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="insert_book_class_dropdownlist">圖書類別</label>
+            <div class="col-md-10">
+                <select class="form-control book_class_dropdownlist" id="insert_book_class_dropdownlist"></select>
+            </div>
+        </div>
+     
+        <div class="form-group">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <button class="btn btn-default" id="insert_book_save" type="submit">存檔</button>
+            </div>
+        </div>
+        <div>
+
+            <a href="/Book/Index">回首頁</a>
+        
+        </div>
+
+    </div>
+</form>
+
