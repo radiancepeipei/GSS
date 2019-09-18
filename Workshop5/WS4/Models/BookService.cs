@@ -237,7 +237,7 @@ namespace WS4.Models
         public void UpdateBook(Models.Book book)
         {
             string sql = @"UPDATE BOOK_DATA 
-                           SET BOOK_NAME=@BOOK_NAME,
+                               SET BOOK_NAME=@BOOK_NAME,
                                BOOK_AUTHOR=@BOOK_AUTHOR,
                                BOOK_PUBLISHER=@BOOK_PUBLISHER,
                                BOOK_NOTE=@BOOK_NOTE,

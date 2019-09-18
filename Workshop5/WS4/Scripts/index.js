@@ -75,11 +75,14 @@ $(document).ready(function () {
         title: "編輯書籍",
         actions: ["Close"]
     });
+
+
     //??
     //編輯window按下存檔
     $("#update_book_save").click(function (e) {
         e.preventDefault();
         var updateBookData = {
+            BOOKID: $("update_book_id").val(),
             BOOK_NAME: $("#update_book_name").val(),
             BOOK_AUTHOR: $("#update_book_author").val(),
             BOOK_PUBLISHER: $("#update_book_publisher").val(),
@@ -90,19 +93,26 @@ $(document).ready(function () {
             USER_ID: $("#update_book_keeper_dropdownlist").data("kendoDropDownList").value()
         };
 
-        $.ajax({
-            type: " Post",
-            dataType: "json",
-            url: "UpdateBookInDB",
-            data: updateBookData
-        }).done(function (data) {
-            alert("已更改成功");
-            $("#book_grid").data("kendoGrid").dataSource.read(); // 更改後 grid 重 load
-        });
+        //判斷書籍狀態與借閱人關係是否正確
+       /* if () {
+        }*/
+
+        //$.ajax({
+        //    type: " Post",
+        //    dataType: "json",
+        //    url: "UpdateBookInDB",
+        //    data: updateBookData
+        //}).done(function (data) {
+        //    alert("已更改成功");
+        //    $("#book_grid").data("kendoGrid").dataSource.read(); // 更改後 grid 重 load
+        //});
 
 
 
 });
+
+
+
 
 /*------------------------------------*/
     //??
@@ -148,11 +158,62 @@ function updateBook(e) {
                 $("#update_book_class_dropdownlist").data("kendoDropDownList").value(response.BOOK_CLASS_ID);
                 $("#update_book_status_dropdownlist").data("kendoDropDownList").value(response.BOOK_STATUS);
                 $("#update_book_keeper_dropdownlist").data("kendoDropDownList").value(response.USER_ID);
-            }
+
+                var bookstatusvalue = response.BOOK_STATUS;
+                if (bookstatusvalue == "A" || bookstatusvalue == "U") {  //A是可借出，U是不可借出
+                    $("#update_book_keeper_dropdownlist").data("kendoDropDownList").enable(false);//keeper無法使用
+                    $("#update_book_delete").attr("disable", false);//可刪除
+                }
+                else if (bookstatusvalue == "B" || bookstatusvalue == "C") {  //B是已借出，U是已借出未領
+                    $("#update_book_keeper_dropdownlist").data("kendoDropDownList").enable(true);//keeper可使用
+                    $("#update_book_delete").attr("disable", true);//不可刪除
+                }
+            }, error: function(error) {
+                    alert("系統發生錯誤");
+                }
         });
-        $("#update_book_window").data("kendoWindow").center().open();
+
+    $("#update_book_window").data("kendoWindow").center().open();
 }
 
+//動態變更借閱人跟書籍狀態的Dropdownlist
+//changeBookStatus();
+//function changeBookStatus() {
+//    var bookStatus = $("#update_book_status_dropdownlist").data("kendoDropDownList").value();
+//    console.log(bookStatus);
+//    $("#update_book_keeper_dropdownlist").change(function () {
+//        if (bookstatusvalue == "A" || bookstatusvalue == "U") {  //A是可借出，U是不可借出
+//            $("#update_book_keeper_dropdownlist").data("kendoDropDownList").enable(false);//keeper無法使用
+//            $("#update_book_delete").attr("disable", false);//可刪除
+//        }
+//        else if (bookstatusvalue == "B" || bookstatusvalue == "C") {  //B是已借出，U是已借出未領
+//            $("#update_book_keeper_dropdownlist").data("kendoDropDownList").enable(true);//keeper可使用
+//            $("#update_book_delete").attr("disable", true);//不可刪除
+//        }
+
+//    });
+
+
+
+
+
+//}
+
+function changeBookStatus() {
+    $("select#update_book_status_dropdownlist").change(function () {
+        var nvalue = $("#update_book_status_dropdownlist").data("kendoDropDownList").value()
+        console.log(nvalue)
+        if (nvalue == "A" || nvalue == "U") {
+            $("#update_book_delete").data("kendoDropDownList").enable(false);
+            $('#update_book_delete').attr("disabled", false);
+        }
+        else {
+            $("#update_book_delete").data("kendoDropDownList").enable(true);
+            $('#update_book_delete').attr("disabled", true);
+        }
+    });
+
+}
 
 
 
